@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication1.Models.LoginUser>
+
+@{
+    ViewData["Title"] = "GetListUser";
+}
+
+<h1>GetListUser</h1>
+
+<p>
+    <a asp-action="CreateUser">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateUser", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteUser", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <br />
+    <div>        
+        @{
+            Html.RenderPartial("PartialView1");
+         }
+     </div>
+    <div>
+        @Html.Partial("PartialView1");
+        
+    </div>
+
+    <div id="partialfrommethod">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Home/PartialView1",
+            success: function (response) {
+                $("#partialfrommethod").html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });        
+    });
+</script>
